@@ -1,0 +1,47 @@
+[project]
+name = "konklawe"
+version = "0.1.0"
+description = "Local multi-agent environment: AI coding CLIs working together, observed live"
+readme = "README.md"
+authors = [
+    { name = "wavymejti", email = "mateusztheszymkowiak@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2",
+    "pyyaml>=6.0.3",
+    "rich>=15.0.0",
+    "typer>=0.27.2",
+]
+
+[project.scripts]
+konklawe = "konklawe.cli:app"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "ruff>=0.16.10",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+# Ruff formats code blocks in Markdown; docs are hand-written and must stay as they are.
+extend-exclude = ["*.md"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+markers = [
+    "live: runs the real provider CLI and consumes subscription limits (opt-in: -m live)",
+]
+addopts = "-m 'not live'"
