@@ -1,0 +1,35 @@
+{
+  "command": [
+    "claude",
+    "-p",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--include-partial-messages",
+    "--model",
+    "nie-ma-takiego-modelu",
+    "--append-system-prompt",
+    "Odpowiadasz zwięźle, po polsku."
+  ],
+  "stdin": "test",
+  "cwd": "/private/tmp/claude-0/-Applications-konklawe/949722ad-2868-4490-98ed-9ce377a286d9/scratchpad/rec-workdir",
+  "exit_code": 1,
+  "timed_out": false,
+  "stderr": "[claude-code:unrecognized_model] {\"model\":\"nie-ma-takiego-modelu\",\"query_source\":\"sdk\"}\n",
+  "duration_ms": 9933,
+  "claude_version": "2.1.289 (Claude Code)",
+  "recorded_at": "2026-10-05T18:13:58.878236+00:00",
+  "env_removed": [
+    "AI_AGENT",
+    "CLAUDECODE",
+    "CLAUDE_CODE_CHILD_SESSION",
+    "CLAUDE_CODE_ENTRYPOINT",
+    "CLAUDE_CODE_EXECPATH",
+    "CLAUDE_CODE_MESSAGING_SOCKET",
+    "CLAUDE_CODE_MESSAGING_TOKEN",
+    "CLAUDE_CODE_SESSION_ATTENDED",
+    "CLAUDE_CODE_SESSION_ID",
+    "CLAUDE_EFFORT",
+    "CLAUDE_PID"
+  ]
+}

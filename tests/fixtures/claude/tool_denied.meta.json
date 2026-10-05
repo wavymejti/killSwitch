@@ -1,0 +1,39 @@
+{
+  "command": [
+    "claude",
+    "-p",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--include-partial-messages",
+    "--model",
+    "haiku",
+    "--append-system-prompt",
+    "Odpowiadasz zwięźle, po polsku.",
+    "--allowedTools",
+    "Read,Grep,Glob",
+    "--disallowedTools",
+    "Edit,Bash"
+  ],
+  "stdin": "Utwórz plik notatka.txt z treścią \"test\". Użyj narzędzia Write.",
+  "cwd": "/private/tmp/claude-0/-Applications-konklawe/949722ad-2868-4490-98ed-9ce377a286d9/scratchpad/rec-workdir",
+  "exit_code": 0,
+  "timed_out": false,
+  "stderr": "",
+  "duration_ms": 16728,
+  "claude_version": "2.1.289 (Claude Code)",
+  "recorded_at": "2026-10-05T18:13:19.985696+00:00",
+  "env_removed": [
+    "AI_AGENT",
+    "CLAUDECODE",
+    "CLAUDE_CODE_CHILD_SESSION",
+    "CLAUDE_CODE_ENTRYPOINT",
+    "CLAUDE_CODE_EXECPATH",
+    "CLAUDE_CODE_MESSAGING_SOCKET",
+    "CLAUDE_CODE_MESSAGING_TOKEN",
+    "CLAUDE_CODE_SESSION_ATTENDED",
+    "CLAUDE_CODE_SESSION_ID",
+    "CLAUDE_EFFORT",
+    "CLAUDE_PID"
+  ]
+}
