@@ -225,3 +225,11 @@ def test_errors_from_all_files_reported_at_once(tmp_path: Path) -> None:
 def test_missing_directory(tmp_path: Path) -> None:
     with pytest.raises(AgentLoadError, match="agents directory does not exist"):
         load_agents(tmp_path / "missing", ADAPTERS)
+
+
+def test_repository_agents_load_with_real_adapters() -> None:
+    agents = load_agents(Path(__file__).parents[1] / "agents")
+
+    assert {"architekt", "recenzent", "echo"} <= set(agents)
+    assert agents["echo"].provider == "fake"
+    assert agents["architekt"].disallowed_tools == ["Edit", "Write", "Bash"]
