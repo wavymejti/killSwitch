@@ -151,9 +151,8 @@ class ParsedEvent(BaseModel):
 
     @classmethod
     def error(cls, message: str, fatal: bool, raw: str | None = None, **extra: Any) -> Self:
-        return cls(
-            type=EventType.ERROR, data={"message": message, "fatal": fatal, **extra}, raw=raw
-        )
+        data = {"message": message, "fatal": fatal, **_compact(**extra)}
+        return cls(type=EventType.ERROR, data=data, raw=raw)
 
     @classmethod
     def stderr(cls, line: str) -> Self:

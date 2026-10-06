@@ -1,8 +1,12 @@
 """Registry of provider adapters."""
 
 from konklawe.adapters.base import ProviderAdapter
+from konklawe.adapters.claude import ClaudeAdapter
+from konklawe.adapters.fake import FakeAdapter
 
-_ADAPTERS: dict[str, ProviderAdapter] = {}
+_ADAPTERS: dict[str, ProviderAdapter] = {
+    adapter.name: adapter for adapter in (ClaudeAdapter(), FakeAdapter())
+}
 
 
 class UnknownProviderError(LookupError):

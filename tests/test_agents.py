@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from konklawe.adapters.base import ProviderAdapter
+from konklawe.adapters.base import CommandSpec, ProviderAdapter, TurnParser, TurnRequest
 from konklawe.agents import (
     AgentLoadError,
     AgentSpec,
@@ -18,6 +18,12 @@ class StubAdapter(ProviderAdapter):
 
     def validate_agent(self, spec: AgentSpec) -> list[str]:
         return ["option 'bad' is not supported"] if "bad" in spec.provider_options else []
+
+    def build_command(self, req: TurnRequest) -> CommandSpec:
+        raise NotImplementedError
+
+    def new_parser(self, agent: AgentSpec) -> TurnParser:
+        raise NotImplementedError
 
 
 ADAPTERS = {"stub": StubAdapter()}
