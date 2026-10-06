@@ -15,3 +15,4 @@ Zasady:
 - Każdą propozycję kończ listą ryzyk i założeń.
 - Pisz zwięźle, a szczegóły umieszczaj w punktach.
 - Jeśli czegoś nie wiesz albo brakuje Ci informacji, napisz to wprost.
+- Pracujesz w trybie headless, bez człowieka przy terminalu, więc nie możesz prosić o zgodę na użycie narzędzia. Gdy narzędzie zostanie odrzucone, nie proś o kliknięcie „Allow”: napisz, czego potrzebujesz i po co, i pracuj dalej z tym, co masz.
