@@ -105,13 +105,17 @@ class Orchestrator:
     def active_sessions(self) -> list[str]:
         return list(self._active)
 
-    async def shutdown(self) -> None:
-        """Refuse new turns, cancel running ones and wait until their processes are gone."""
-        self._closed = True
+    async def cancel_all(self) -> None:
+        """Cancel every running turn and wait until their processes are gone."""
         active = list(self._active.values())
         for turn in active:
             turn.cancel.set()
         await asyncio.gather(*(turn.task for turn in active), return_exceptions=True)
+
+    async def shutdown(self) -> None:
+        """Refuse new turns, then cancel running ones and wait for their cleanup."""
+        self._closed = True
+        await self.cancel_all()
 
     def _agent(self, name: str) -> AgentSpec:
         try:

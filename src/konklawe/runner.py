@@ -153,7 +153,7 @@ class _TurnRun:
                 await self.handle(parsed)
         await self._report_exit()
         if stop_reason == "cancelled":
-            return State.CANCELLED, "cancelled"
+            return State.CANCELLED, None
         if stop_reason == "timeout":
             return State.FAILED, f"timeout after {self.settings.turn_timeout_s:g}s"
         if self.rate_limited:
@@ -283,7 +283,7 @@ class _TurnRun:
         if self.proc is not None:
             kill_group(self.proc)
             await self._report_exit()
-        await self._finish(State.CANCELLED, "cancelled")
+        await self._finish(State.CANCELLED, "interrupted")
 
     async def _report_exit(self) -> None:
         if self.proc is None or self.exit_reported:
