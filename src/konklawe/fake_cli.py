@@ -63,7 +63,7 @@ def main(argv: list[str] | None = None) -> int:
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
-        emit(json.dumps({"type": "fake_child", "pid": child.pid}))
+        emit(json.dumps({"type": "fake_child", "pid": child.pid, "parent_pid": os.getpid()}))
 
     if args.fixture:
         with args.fixture.open(encoding="utf-8") as fixture:
